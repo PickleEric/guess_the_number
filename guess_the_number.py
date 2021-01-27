@@ -14,6 +14,7 @@ def generate_secret(low, high):
     '''Generate a secret number for the user to guess'''
     return random.randint(low, high)
 
+ # count the number of guesses
 
 def get_guess():
     '''get user's guess'''
@@ -38,15 +39,16 @@ def check_guess(guess, secret):
 
 
 def main():
-
+    counter = 0
     (low, high) = configure_range()
     secret = generate_secret(low, high)
-
+    
     while True:
+        counter = counter + 1
         guess = get_guess()
         result = check_guess(guess, secret)
         print(result)
-
+        print(f'You have guessed: {counter}')
         if result == correct:
             break
 
